@@ -4,6 +4,6 @@
   Python3.7  
   ffmpeg
 ## Instruction
-  Change the path in main.py  
-  put the videoplayback.mp4 in the same path  
-  run main.py
+  Change the path in **main.py**  
+  put the **videoplayback.mp4** in the same path  
+  run **main.py**
