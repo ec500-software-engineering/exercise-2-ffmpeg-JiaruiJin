@@ -8,7 +8,7 @@ def ffprobe(file) -> dict:
                                     '-print_format', 'json',
                                     '-show_streams',
                                     '-show_format',
-                                    file])
+                                    file],shell=True)
     return json.loads(meta)
 
 def test_duration():
