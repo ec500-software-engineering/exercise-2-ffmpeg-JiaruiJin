@@ -11,7 +11,7 @@ def ffprobe(file) -> dict:
                                     file],shell=True)
     return json.loads(meta)
 
-def tqest_duration():
+def test_duration():
     fnin = "./videoplayback.mp4"
     fnout = "./videoplayback.mp4_480.mp4"
 
