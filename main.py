@@ -1,10 +1,8 @@
-import subprocess
-import json
 import os
 import threading
 import queue
 import asyncio
-from pytest import approx
+
 
 def convert_video(Q,file):
     if not Q.empty():
@@ -32,14 +30,6 @@ def convert_video(Q,file):
         for thread in thread_list:
             print('thread: ', thread.result())
 
-def ffprobe(file) -> dict:
-    """ get media metadata """
-    meta = subprocess.check_output(['ffprobe', '-v', 'warning',
-                                    '-print_format', 'json',
-                                    '-show_streams',
-                                    '-show_format',
-                                    file])
-    return json.loads(meta)
 
 def main():
     Q = queue.Queue()
@@ -48,20 +38,6 @@ def main():
         if file.endswith('.mp4'):
             Q.put(file)
     convert_video(Q,file)
-    ffprobe(file)
-
-def test_duration():
-    fnin = 'videoplayback.mp4'
-    fnout = 'videoplayback.mp4_480.mp4'
-
-    orig_meta = ffprobe(fnin)
-    orig_duration = float(orig_meta['streams'][0]['duration'])
-
-    meta_480 = ffprobe(fnout)
-    duration_480 = float(meta_480['streams'][0]['duration'])
-
-    assert orig_duration == approx(duration_480)
-
 
 
 if __name__ == '__main__':
