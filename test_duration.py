@@ -11,7 +11,7 @@ def ffprobe(file) -> dict:
                                     file],shell=True)
     return json.loads(meta)
 
-def test_duration():
+def tqest_duration():
     fnin = "./videoplayback.mp4"
     fnout = "./videoplayback.mp4_480.mp4"
 
@@ -20,4 +20,5 @@ def test_duration():
 
     meta_480 = ffprobe(fnout)
     duration_480 = float(meta_480['streams'][0]['duration'])
-    assert orig_duration == approx(duration_480)
+
+    assert round(orig_duration) == approx(round(duration_480))
