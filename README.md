@@ -8,3 +8,5 @@
   put the **videoplayback.mp4** in the same path  
   run **main.py** to get converted video documents  
   use the 480p video to compare with original video in duration
+## CPU evaluation
+  ![](https://github.com/ec500-software-engineering/exercise-2-ffmpeg-JiaruiJin/blob/master/CPU_Evaluation.PNG)
